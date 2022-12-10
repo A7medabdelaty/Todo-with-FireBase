@@ -12,7 +12,7 @@ class HomeScreen extends StatelessWidget {
     MainProvider provider = Provider.of<MainProvider>(context);
     return Scaffold(
       appBar: AppBar(title: Text(provider.appBarTitle)),
-      floatingActionButton: floatingButton(),
+      floatingActionButton: floatingButton(context),
       floatingActionButtonLocation: FloatingActionButtonLocation.centerDocked,
       bottomNavigationBar: bottomAppBar(provider),
       body: provider.activeScreen,

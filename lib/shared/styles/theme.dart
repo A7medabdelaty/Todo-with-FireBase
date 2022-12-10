@@ -14,7 +14,7 @@ class MyTheme {
         background: Colors.transparent,
         onBackground: Colors.white,
         surface: Colors.grey,
-        onSurface: Colors.white),
+        onSurface: Colors.black),
     textTheme: TextTheme(
       subtitle1: TextStyle(
         fontSize: 20,
@@ -34,6 +34,7 @@ class MyTheme {
       elevation: 0.0,
     ),
     bottomAppBarColor: Colors.white,
+    bottomSheetTheme: const BottomSheetThemeData(backgroundColor: Colors.white,),
     bottomNavigationBarTheme: BottomNavigationBarThemeData(
       type: BottomNavigationBarType.fixed,
       showSelectedLabels: false,
