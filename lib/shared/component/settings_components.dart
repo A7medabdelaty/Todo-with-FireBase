@@ -1,15 +1,14 @@
 import 'package:flutter/material.dart';
 import 'package:todo/provider/settings_provider.dart';
 import 'package:todo/shared/styles/colors.dart';
-
 Widget dropDownMenu(SettingsProvider provider, String value, List items) =>
     Container(
       decoration: BoxDecoration(
-        border: Border.all(color: COLOR_PRIMARY, width: 0.5),
-        borderRadius: BorderRadius.circular(10),
-        color: Colors.white,
+        border: Border.all(color: COLOR_PRIMARY, width: 1),
+        borderRadius: BorderRadius.circular(5),
+        color: provider.theme == ThemeMode.light ? Colors.white : COLOR_SECOND_BLACK,
       ),
-      padding: const EdgeInsets.symmetric(horizontal: 20, vertical: 5),
+      padding: const EdgeInsets.symmetric(horizontal: 20),
       child: DropdownButton(
         underline: Container(),
         isExpanded: true,
