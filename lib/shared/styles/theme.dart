@@ -13,7 +13,7 @@ class MyTheme {
         onError: Colors.white,
         background: Colors.transparent,
         onBackground: Colors.white,
-        surface: Colors.grey,
+        surface: Colors.white,
         onSurface: Colors.black),
     textTheme: TextTheme(
       subtitle1: TextStyle(
