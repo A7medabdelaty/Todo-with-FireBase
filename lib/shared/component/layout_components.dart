@@ -63,7 +63,6 @@ void showBottomSheet(context, MainProvider provider) => showModalBottomSheet(
                 decoration: const InputDecoration(
                   labelText: 'Task Date',
                   border: OutlineInputBorder(),
-                  focusColor: Colors.blue,
                   enabledBorder: UnderlineInputBorder(),
                 ),
               ),
@@ -107,6 +106,7 @@ void showBottomSheet(context, MainProvider provider) => showModalBottomSheet(
     );
 
 Widget bottomAppBar(MainProvider provider) => BottomAppBar(
+      shape: const CircularNotchedRectangle(),
       notchMargin: 8,
       child: BottomNavigationBar(
           type: BottomNavigationBarType.fixed,
