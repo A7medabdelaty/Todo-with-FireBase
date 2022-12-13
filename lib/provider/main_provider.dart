@@ -26,4 +26,11 @@ class MainProvider extends ChangeNotifier {
     controller.text = text;
     notifyListeners();
   }
+
+  resetControllers() {
+    titleController.text = '';
+    dateController.text = '';
+    timeController.text = '';
+    notifyListeners();
+  }
 }

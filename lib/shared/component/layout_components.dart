@@ -13,11 +13,14 @@ Widget floatingButton(context, MainProvider provider) => FloatingActionButton(
       child: const Icon(Icons.add),
     );
 
+GlobalKey<FormState> formKey = GlobalKey<FormState>();
+
 void showBottomSheet(context, MainProvider provider) => showModalBottomSheet(
       context: context,
       builder: (context) => Padding(
         padding: const EdgeInsets.symmetric(horizontal: 30, vertical: 20),
-        child: SingleChildScrollView(
+        child: Form(
+          key: formKey,
           child: Column(
             children: [
               Text(
@@ -33,6 +36,8 @@ void showBottomSheet(context, MainProvider provider) => showModalBottomSheet(
                   border: OutlineInputBorder(),
                   enabledBorder: UnderlineInputBorder(),
                 ),
+                validator: (value) =>
+                    value!.isEmpty ? 'Title can not be empty' : null,
               ),
               const SizedBox(
                 height: 20,
@@ -49,22 +54,26 @@ void showBottomSheet(context, MainProvider provider) => showModalBottomSheet(
                     lastDate: DateTime.now().add(
                       const Duration(days: 356),
                     ),
-                  ).then((value) {
-                    value != null
-                        ? provider.setControllerText(
-                            DateFormat('EEEE, MMM d, yyyy')
-                                .format(value)
-                                .toString(),
-                            provider.dateController)
-                        : provider.dateController.text =
-                            provider.dateController.text;
-                  });
+                  ).then(
+                    (value) {
+                      value != null
+                          ? provider.setControllerText(
+                              DateFormat('EEEE, MMM d, yyyy')
+                                  .format(value)
+                                  .toString(),
+                              provider.dateController)
+                          : provider.dateController.text =
+                              provider.dateController.text;
+                    },
+                  );
                 },
                 decoration: const InputDecoration(
                   labelText: 'Task Date',
                   border: OutlineInputBorder(),
                   enabledBorder: UnderlineInputBorder(),
                 ),
+                validator: (value) =>
+                    value!.isEmpty ? 'Date can not be empty' : null,
               ),
               const SizedBox(
                 height: 20,
@@ -88,6 +97,8 @@ void showBottomSheet(context, MainProvider provider) => showModalBottomSheet(
                             provider.timeController.text;
                   });
                 },
+                validator: (value) =>
+                    value!.isEmpty ? 'Time can not be empty' : null,
               ),
               const SizedBox(
                 height: 20,
@@ -95,7 +106,13 @@ void showBottomSheet(context, MainProvider provider) => showModalBottomSheet(
               SizedBox(
                 width: double.infinity,
                 child: ElevatedButton(
-                  onPressed: () {},
+                  onPressed: () {
+                    if (formKey.currentState!.validate()) {
+                      print('Valid');
+                      Navigator.pop(context);
+                      provider.resetControllers();
+                    }
+                  },
                   child: const Text('Save'),
                 ),
               )
@@ -127,3 +144,4 @@ Widget bottomAppBar(MainProvider provider) => BottomAppBar(
                 label: ''),
           ]),
     );
+
