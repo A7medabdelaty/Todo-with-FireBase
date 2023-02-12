@@ -1,0 +1,9 @@
+{
+    "todo_list": "To Do List",
+    "settings":"Settings",
+    "language" : "Language",
+    "theme" : "Theme",
+    "language_field" : "English",
+    "theme_field_light" : "Light",
+    "theme_field_dark" : "Dark"
+ }
